@@ -1,4 +1,4 @@
-""" So I can't show my actual scripts from the Kaggle competition,
+""" I can't show my actual scripts from the Kaggle competition,
 but here is my process for fitting a model. The data is split like 
 the competition-- where each day is treated as one unit 
 (i.e. all events occuring on 1-01-04 will be either in the testing
@@ -6,14 +6,14 @@ or training group).
 
 The scoring metric I use is a multivariate log-loss. The function 
 itself is based on Kaggle's own, but model results need to be 
-manipulated for it to work (explained more later) """
+manipulated for it to work """
 
 import pandas as pd
 import pickle
 import numpy as np
 
 #################################
-functions
+Functions 
 #################################
 
 def split_train_test(dataframe, size=1500):
