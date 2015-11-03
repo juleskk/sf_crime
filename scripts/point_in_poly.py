@@ -8,10 +8,6 @@ import shapely.geometry
 from pyproj import Proj, transform
 
 
-
-df = pd.read_csv('/datafiles/train.csv', parse_dates = ['dates'])
-fc = fiona.open('/sfpd_plots/sfpd_plots.shp')
-
 ################################
 # Functions 
 ################################
@@ -49,8 +45,13 @@ def point_in_poly(dataframe):
     return results 
 
 
-#################################
+################################
+# Main
+################################
 pickle.dump( results, open( "../datafiles/results.p", "wb" ) )
+df = pd.read_pickle('../datafiles/full.p', parse_dates = ['dates'])
+fc = fiona.open('../sfpd_plots/sfpd_plots.shp')
+
 df['longi'], df['lati'] = convert(df)
 df['shape'] = make_points(df)
 results = point_in_poly(df)
